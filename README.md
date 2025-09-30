@@ -9,8 +9,11 @@ Este é um cartão de perfil responsivo e interativo que permite alternar entre 
 ## 🚀 Tecnologias Utilizadas
 
 **HTML5** - Estrutura semântica da página
+
 **CSS3** - Estilização moderna com variáveis CSS e gradientes
+
 **JavaScript** - Interatividade e simulação de IA
+
 **Integração conceitual com API de IA** - Simulação de serviços como DeepSeek
 
 ## 🎯 Como Funciona
