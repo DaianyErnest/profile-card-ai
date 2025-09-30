@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Daiany Ernesto</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --light-blue: #dbeafe;
+            --dark-blue: #1e40af;
+            --dark: #1f2937;
+            --light: #f0f9ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent) 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.2);
+            width: 100%;
+            max-width: 420px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.3);
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 35px 20px;
+            color: white;
+            position: relative;
+        }
+        
+        .profile-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: white;
+            border-radius: 50% 50% 0 0;
+        }
+        
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-name {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .profile-title {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        .profile-content {
+            padding: 30px 25px;
+        }
+        
+        .profile-bio {
+            margin-bottom: 25px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+        
+        .profile-details {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .detail-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+        
+        .profile-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .skill {
+            background: var(--light-blue);
+            color: var(--dark-blue);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .skill:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .ai-generate-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+            width: 100%;
+        }
+        
+        .ai-generate-btn:hover {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.4);
+        }
+        
+        .reset-btn {
+            background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .reset-btn:hover {
+            background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%);
+            transform: translateY(-2px);
+        }
+        
+        .api-info {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+        
+        .profile-indicator {
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            display: inline-block;
+            font-weight: 500;
+        }
+        
+        .indicator-daiany {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .indicator-random {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+        
+        @media (max-width: 480px) {
+            .profile-card {
+                max-width: 100%;
+            }
+            
+            .profile-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-image-container">
+                <img src="imagem/foto-dai.jpg" 
+                     alt="Daiany Ernesto - Desenvolvedora Front-End" 
+                     class="profile-image" 
+                     id="profile-image">
+            </div>
+            <h1 class="profile-name" id="profile-name">Daiany Ernesto</h1>
+            <p class="profile-title" id="profile-title">Desenvolvedora Front-End</p>
+            <div class="watermark">💙 #DateAMaybe</div>
+        </div>
+        
+        <div class="profile-content">
+            <div class="profile-indicator indicator-daiany" id="profile-indicator">
+                👋 Perfil Original - Daiany Ernesto
+            </div>
+            
+            <div class="profile-details">
+                <div class="detail-item">
+                    <div class="detail-value" id="detail-age">28</div>
+                    <div class="detail-label">Idade</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-value" id="detail-location">Brasil</div>
+                    <div class="detail-label">Localização</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-value" id="detail-exp">Júnior</div>
+                    <div class="detail-label">Experiência</div>
+                </div>
+            </div>
+            
+            <p class="profile-bio" id="profile-bio">
+                Desenvolvedora front-end apaixonada por criar interfaces modernas e responsivas. 
+                Sempre em busca de novos conhecimentos e desafios na área de tecnologia. 
+                Aos 28 anos, estou constantemente aprendendo e me desenvolvendo profissionalmente.
+            </p>
+            
+            <div class="profile-skills" id="profile-skills">
+                <span class="skill">HTML</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Git</span>
+                <span class="skill">Responsive Design</span>
+            </div>
+            
+            <button class="ai-generate-btn" onclick="generateRandomProfile()">
+                🔄 Gerar Perfil Aleatório com IA
+            </button>
+            
+            <button class="reset-btn" onclick="resetToDaianyProfile()">
+                ↺ Voltar ao Meu Perfil
+            </button>
+            
+            <p class="api-info">
+                * Esta demonstração simula a integração com APIs de IA. Em um projeto real, 
+                você precisaria de uma chave de API para serviços como DeepSeek, OpenAI, etc.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Dados do perfil da Daiany (seu perfil real)
+        const daianyProfile = {
+            name: 'Daiany Ernesto',
+            title: 'Desenvolvedora Front-End',
+            age: '28',
+            location: 'Brasil',
+            experience: 'Júnior',
+            bio: 'Desenvolvedora front-end apaixonada por criar interfaces modernas e responsivas. Sempre em busca de novos conhecimentos e desafios na área de tecnologia. Aos 28 anos, estou constantemente aprendendo e me desenvolvendo profissionalmente.',
+            skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Git', 'Responsive Design'],
+            image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'
+        };
+
+        // Perfis aleatórios para simular IA
+        const randomProfiles = [
+            {
+                name: 'Carlos Oliveira',
+                title: 'Desenvolvedor Full-Stack',
+                age: '32',
+                location: 'São Paulo, SP',
+                experience: 'Sênior',
+                bio: 'Desenvolvedor full-stack com 8 anos de experiência em projetos de grande escala. Especialista em JavaScript, Node.js e arquitetura de sistemas distribuídos.',
+                skills: ['JavaScript', 'Node.js', 'React', 'MongoDB', 'AWS', 'Docker'],
+                image: 'https://i.pravatar.cc/150?img=1'
+            },
+            {
+                name: 'Marina Santos',
+                title: 'UI/UX Designer',
+                age: '29',
+                location: 'Florianópolis, SC',
+                experience: 'Pleno',
+                bio: 'Designer especializada em experiência do usuário e interfaces modernas. Apaixonada por criar produtos digitais que unem beleza e funcionalidade.',
+                skills: ['Figma', 'UI Design', 'UX Research', 'Prototipagem', 'Adobe XD', 'Design System'],
+                image: 'https://i.pravatar.cc/150?img=5'
+            },
+            {
+                name: 'Ricardo Almeida',
+                title: 'Arquiteto de Software',
+                age: '35',
+                location: 'Belo Horizonte, MG',
+                experience: 'Sênior',
+                bio: 'Arquiteto de software com foco em soluções escaláveis e de alto desempenho. Mais de 10 anos de experiência em liderança técnica e mentoria.',
+                skills: ['Java', 'Spring Boot', 'Microservices', 'Kubernetes', 'SQL', 'Cloud Architecture'],
+                image: 'https://i.pravatar.cc/150?img=8'
+            },
+            {
+                name: 'Fernanda Lima',
+                title: 'DevOps Engineer',
+                age: '27',
+                location: 'Porto Alegre, RS',
+                experience: 'Pleno',
+                bio: 'Engenheira de DevOps com expertise em automação de pipelines CI/CD e infraestrutura como código. Comprometida com boas práticas de DevOps.',
+                skills: ['Docker', 'Kubernetes', 'Jenkins', 'Terraform', 'Linux', 'AWS'],
+                image: 'https://i.pravatar.cc/150?img=11'
+            },
+            {
+                name: 'João Silva',
+                title: 'Desenvolvedor Mobile',
+                age: '26',
+                location: 'Rio de Janeiro, RJ',
+                experience: 'Júnior',
+                bio: 'Desenvolvedor mobile focado em React Native. Iniciando a carreira em tecnologia e buscando oportunidades para crescer e aprender com a equipe.',
+                skills: ['React Native', 'JavaScript', 'Redux', 'Firebase', 'Git', 'REST APIs'],
+                image: 'https://i.pravatar.cc/150?img=15'
+            }
+        ];
+
+        // Função para gerar perfil aleatório
+        function generateRandomProfile() {
+            const randomIndex = Math.floor(Math.random() * randomProfiles.length);
+            const randomProfile = randomProfiles[randomIndex];
+            
+            // Atualizar todos os elementos da página
+            updateProfile(randomProfile, false);
+            
+            // Feedback visual
+            const button = document.querySelector('.ai-generate-btn');
+            button.textContent = '✅ Perfil Gerado!';
+            button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            
+            setTimeout(() => {
+                button.textContent = '🔄 Gerar Perfil Aleatório com IA';
+                button.style.background = 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)';
+            }, 2000);
+        }
+
+        // Função para voltar ao perfil da Daiany
+        function resetToDaianyProfile() {
+            updateProfile(daianyProfile, true);
+            
+            // Feedback visual
+            const button = document.querySelector('.reset-btn');
+            const originalText = button.textContent;
+            button.textContent = '✅ Perfil Restaurado!';
+            button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = 'linear-gradient(135deg, #6b7280 0%, #9ca3af 100%)';
+            }, 2000);
+        }
+
+        // Função para atualizar o perfil na página
+        function updateProfile(profile, isDaiany) {
+            document.getElementById('profile-name').textContent = profile.name;
+            document.getElementById('profile-title').textContent = profile.title;
+            document.getElementById('profile-bio').textContent = profile.bio;
+            document.getElementById('profile-image').src = profile.image;
+            document.getElementById('detail-age').textContent = profile.age;
+            document.getElementById('detail-location').textContent = profile.location;
+            document.getElementById('detail-exp').textContent = profile.experience;
+            
+            // Atualizar habilidades
+            const skillsContainer = document.getElementById('profile-skills');
+            skillsContainer.innerHTML = '';
+            profile.skills.forEach(skill => {
+                const skillElement = document.createElement('span');
+                skillElement.classList.add('skill');
+                skillElement.textContent = skill;
+                skillsContainer.appendChild(skillElement);
+            });
+            
+            // Atualizar indicador
+            const indicator = document.getElementById('profile-indicator');
+            if (isDaiany) {
+                indicator.textContent = '👋 Perfil Original - Daiany Ernesto';
+                indicator.className = 'profile-indicator indicator-daiany';
+            } else {
+                indicator.textContent = '🎲 Perfil Aleatório - Simulação IA';
+                indicator.className = 'profile-indicator indicator-random';
+            }
+        }
+
+        // Em um projeto real, a função usaria uma API de IA como:
+        /*
+        async function generateRealAIContent() {
+            const API_KEY = 'sua_chave_api_aqui';
+            const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: 'deepseek-chat',
+                    messages: [{ 
+                        role: 'user', 
+                        content: 'Gere um perfil profissional aleatório para um desenvolvedor' 
+                    }],
+                    max_tokens: 150
+                })
+            });
+            
+            const data = await response.json();
+            // Processar a resposta da IA e atualizar o perfil
+        }
+        */
+    </script>
+</body>
+</html>
